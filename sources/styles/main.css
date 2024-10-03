@@ -1,0 +1,201 @@
+/* Estilo para o corpo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+    user-select: none;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+/* Container principal do jogo */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Título do jogo */
+h2 {
+    font-size: 3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin: 0;
+}
+
+/* Botão de reset */
+.reset {
+    padding: 15px 30px;
+    width: 100%;
+    color: #fff;
+    background: #ff0080;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(255, 0, 128, 0.4);
+    transition: background 0.3s ease;
+}
+
+.reset:hover {
+    background: #ff3399;
+}
+
+.reset:focus {
+    outline: none;
+    background: #ff66b2;
+}
+
+/* Estilo da área do jogo */
+.game {
+    width: 460px;
+    height: 460px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    perspective: 1000px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para cada peça do jogo */
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    font-size: 2.5em;
+    color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transform: rotateY(180deg);
+    transition: transform 0.6s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #404040;
+    border-radius: 8px;
+    transition: transform 0.6s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after,
+.boxMatch::after {
+    transform: rotateY(180deg);
+}
+
+/* Efeito de quando as peças correspondem */
+.boxMatch {
+    background: #32cd32;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(50, 205, 50, 0.6);
+    transform: rotateY(0deg);
+}
+
+.boxMatch::after {
+    background: #228b22;
+}
+
+/* Transições suaves para as peças */
+.item, .item::after {
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Modal - oculto inicialmente */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 400px;
+    animation: modalFade 0.5s ease-in-out;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: #32cd32;
+}
+
+.play-again {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #32cd32;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.play-again:hover {
+    background-color: #228b22;
+}
+
+/* Botão de fechar */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2em;
+    color: #333;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ff0000;
+}
+
+/* Animação de entrada do modal */
+@keyframes modalFade {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
