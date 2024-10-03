@@ -58,4 +58,4 @@ Este projeto está licenciado sob a licença MIT. Sinta-se à vontade para utili
 
 ---
 
-Feito com ❤️ por [Seu Nome](https://github.com/seu-usuario)
+Feito com ❤️ por [Nivaldo G Neto](https://github.com/nivaldo-nilngn)
